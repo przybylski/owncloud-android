@@ -36,7 +36,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DbHandler {
     private SQLiteDatabase mDB;
-    private OpenerHepler mHelper;
+    private OpenerHelper mHelper;
     private final String mDatabaseName = "ownCloud";
     private final String TABLE_SESSIONS = "sessions";
     private final int mDatabaseVersion = 1;
@@ -44,7 +44,7 @@ public class DbHandler {
     private final String TABLE_INSTANT_UPLOAD = "instant_upload";
 
     public DbHandler(Context context) {
-        mHelper = new OpenerHepler(context);
+        mHelper = new OpenerHelper(context);
         mDB = mHelper.getWritableDatabase();
     }
 
@@ -67,15 +67,15 @@ public class DbHandler {
         mDB.delete(TABLE_INSTANT_UPLOAD, null, null);
     }
     
-    private class OpenerHepler extends SQLiteOpenHelper {
-        public OpenerHepler(Context context) {
+    private class OpenerHelper extends SQLiteOpenHelper {
+        public OpenerHelper(Context context) {
             super(context, mDatabaseName, null, mDatabaseVersion);
         }
 
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_INSTANT_UPLOAD + " ("
-            		+ " _id INTEGET PRIMARY KEY, "
+            		+ " _id INTEGEG PRIMARY KEY, "
             		+ " path TEXT,"
             		+ " account TEXT);");
         }
