@@ -75,7 +75,7 @@ public class DbHandler {
         @Override
         public void onCreate(SQLiteDatabase db) {
             db.execSQL("CREATE TABLE " + TABLE_INSTANT_UPLOAD + " ("
-            		+ " _id INTEGEG PRIMARY KEY, "
+            		+ " _id INTEGER PRIMARY KEY, "
             		+ " path TEXT,"
             		+ " account TEXT);");
         }
